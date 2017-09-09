@@ -2,7 +2,7 @@ import socket
 import darknet as dn
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("", 5005))
+server_socket.bind(("", 5006))
 server_socket.listen(5)
 
 net = dn.load_net("cfg/yolo.cfg".encode(), "yolo.weights".encode(), 0)

@@ -1,7 +1,7 @@
 import socket
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(("192.168.31.240", 5005))
+client_socket.connect(("192.168.31.240", 5006))
 
 img = open("dog.jpg", 'rb')
 while True:
