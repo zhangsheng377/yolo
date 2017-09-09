@@ -16,12 +16,13 @@ while True:
         string = client_socket.recv(512)
         if not string:
             break
-        if string == "ISOVER,REQUESTJSON":
-            break
+        print(string)
         fp.write(string)
     fp.close()
+    client_socket.close()
     print("Data Received successfully")
     r = dn.detect(net, meta, "tmp.jpg".encode())
     print(r)
+    client_socket.connect(address)
     client_socket.send("".join(r))
     client_socket.close()
