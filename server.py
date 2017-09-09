@@ -19,9 +19,13 @@ while (1):
     fp.close()
     print("Data Received successfully")
 '''
+import sys, os
+
+sys.path.append(os.path.join(os.getcwd(), 'python/'))
 import darknet as dn
 
-net = dn.load_net("cfg/yolo.cfg", "yolo.weights", 0)
-meta = dn.load_meta("cfg/coco.data")
-r = dn.detect(net, meta, "data/dog.jpg")
+net = dn.load_net("cfg/yolo.cfg".encode(), "yolo.weights".encode(), 0)
+meta = dn.load_meta("cfg/coco.data".encode())
+
+r = dn.detect(net, meta, "data/dog.jpg".encode())
 print(r)
