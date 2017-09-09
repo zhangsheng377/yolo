@@ -1,12 +1,12 @@
 import socket
 import darknet as dn
 
-server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("", 5006))
-server_socket.listen(5)
-
 net = dn.load_net("cfg/yolo.cfg".encode(), "yolo.weights".encode(), 0)
 meta = dn.load_meta("cfg/coco.data".encode())
+
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket.bind(("", 5007))
+server_socket.listen(5)
 
 while True:
     client_socket, address = server_socket.accept()
