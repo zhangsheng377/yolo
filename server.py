@@ -19,9 +19,7 @@ while (1):
     fp.close()
     print("Data Received successfully")
 '''
-import sys, os
 
-sys.path.append(os.path.join(os.getcwd(), 'python/'))
 import darknet as dn
 
 net = dn.load_net("cfg/yolo.cfg".encode(), "yolo.weights".encode(), 0)
