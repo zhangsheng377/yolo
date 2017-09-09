@@ -16,6 +16,8 @@ while True:
         string = client_socket.recv(512)
         if not string:
             break
+        if string == "ISOVER,REQUESTJSON":
+            break
         fp.write(string)
     fp.close()
     print("Data Received successfully")

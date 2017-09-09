@@ -10,6 +10,7 @@ while True:
         break
     client_socket.send(string)
 img.close()
+client_socket.send("ISOVER,REQUESTJSON")
 print("Data sent successfully")
 string = client_socket.recv(1024)
 print(string)
