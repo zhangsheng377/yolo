@@ -11,5 +11,7 @@ while True:
     client_socket.send(string)
 img.close()
 print("Data sent successfully")
+string = client_socket.recv(1024)
+print(string)
 client_socket.close()
 exit()

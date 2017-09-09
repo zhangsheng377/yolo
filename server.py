@@ -21,5 +21,5 @@ while True:
     print("Data Received successfully")
     r = dn.detect(net, meta, "tmp.jpg".encode())
     print(r)
-    client_socket.send(r)
+    client_socket.send(r.__str__())
     client_socket.close()
