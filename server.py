@@ -14,7 +14,7 @@ file_socket.listen(5)
 while True:
     client_socket, address = server_socket.accept()
     print("Conencted to - ", address)
-    file_client_socket, address = server_socket.accept()
+    file_client_socket, address = file_socket.accept()
     print("File Conencted to - ", address)
     isEmpty = True
     fp = open("tmp.jpg", 'wb')
