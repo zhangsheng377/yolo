@@ -4,7 +4,12 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect(("192.168.31.240", 5007))
 
 img = open("dog.jpg", 'rb')
-string = img.readlines()
+string = "".encode()
+while True:
+    strng = img.readline()
+    if not strng:
+        break
+    string += strng
 img.close()
 if string:
     client_socket.send(string)
