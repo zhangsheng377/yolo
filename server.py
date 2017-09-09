@@ -10,7 +10,7 @@ meta = dn.load_meta("cfg/coco.data".encode())
 
 while True:
     client_socket, address = server_socket.accept()
-    print("Conencted to - ", address, "\n")
+    print("Conencted to - ", address)
     fp = open("tmp.jpg", 'wb')
     while True:
         string = client_socket.recv(512)
@@ -21,5 +21,5 @@ while True:
     print("Data Received successfully")
     r = dn.detect(net, meta, "tmp.jpg".encode())
     print(r)
-    client_socket.send(r.__str__())
+    client_socket.send("".join(r))
     client_socket.close()
