@@ -11,18 +11,13 @@ server_socket.listen(5)
 while True:
     client_socket, address = server_socket.accept()
     print("Conencted to - ", address)
-    fp = open("tmp.jpg", 'wb')
-    while True:
-        string = client_socket.recv(512)
-        if not string:
-            break
-        print(string)
+    string = client_socket.recv()
+    if string:
+        fp = open("tmp.jpg", 'wb')
         fp.write(string)
-    fp.close()
-    client_socket.close()
-    print("Data Received successfully")
-    r = dn.detect(net, meta, "tmp.jpg".encode())
-    print(r)
-    client_socket.connect(address)
-    client_socket.send("".join(r))
+        fp.close()
+        print("Data Received successfully")
+        r = dn.detect(net, meta, "tmp.jpg".encode())
+        print(r)
+        client_socket.send("".join(r))
     client_socket.close()
