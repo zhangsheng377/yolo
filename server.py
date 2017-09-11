@@ -1,6 +1,5 @@
 import socket
 import darknet as dn
-import json
 
 net = dn.load_net("cfg/yolo.cfg".encode(), "yolo.weights".encode(), 0)
 meta = dn.load_meta("cfg/coco.data".encode())
@@ -30,7 +29,6 @@ while True:
     if not isEmpty:
         print("Data Received successfully")
         r = dn.detect(net, meta, "tmp.jpg".encode())
-        j = json.dumps(r)
-        print(j)
-        client_socket.send(j)
+        print(r)
+        client_socket.send(str(r, encoding="utf-8"))
     client_socket.close()
