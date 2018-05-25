@@ -190,49 +190,40 @@ void ExtInt0Handler(void) interrupt 0
 void 	User_handle(uint8 dat)
 {
      //UARTSendByte(dat);//串口识别码（十六进制）
-		 if(0==dat)
+		 /*if(0==dat)
 		 {
 		  	G0_flag=ENABLE;
 			  LED=0;
-			  PrintCom("receive command\r\n"); /*text.....*/
-		 }
-		 else if(ENABLE==G0_flag)
+			  PrintCom("receive command\r\n");
+		 }*/
+		 //else 
+	G0_flag=ENABLE;
+		if(ENABLE==G0_flag)
 		 {	
-		 		G0_flag=DISABLE;
-				LED=1;
+		 		//G0_flag=DISABLE;
+				//LED=1;
 			 switch(dat)		   /*对结果执行相关操作,客户可删除Printcom 串口输出语句替换为其他需要控制的代码*/
 			  {
-				  case CODE_DMCS:			
-						PrintCom("receive code test\r\n"); /*text.....*/
+					case 0:					
+						G0_flag=ENABLE;
+						LED=0;
+						PrintCom("receive command\r\n");
 													break;
-					case CODE_KFBYZ:	 
-						PrintCom("receive board test\r\n"); /*text.....*/
-													break;
-					case CODE_KD:					
-						PrintCom("receive turn on\r\n"); /*text.....*/
-													break;
-					case CODE_GD:					
-						PrintCom("receive turn off\r\n"); /*text.....*/
-													break;
-					case CODE_BJ:					
-						PrintCom("receive beijing\r\n"); /*text.....*/
-													break;
-					case CODE_SH:					
-						PrintCom("receive shanghai\r\n"); /*text.....*/
-													break;
-					case CODE_GZ:					
-						PrintCom("receive guangzhou\r\n"); /*text.....*/
-													break;	
-          case CODE_SM:					
+          case CODE_SM:		
+LED=1;						
 						PrintCom("receive sao miao\r\n"); /*text.....*/
 													break;	
-          case CODE_SB:					
+          case CODE_SB:	
+LED=1;						
 						PrintCom("receive shi bie\r\n"); /*text.....*/
 													break;
-          case CODE_PZ:					
+          case CODE_PZ:	
+LED=1;						
 						PrintCom("receive pai zhao\r\n"); /*text.....*/
 													break;					
-					default:PrintCom("repeat\r\n"); /*text.....*/
+					default:
+						LED=1;
+						PrintCom("repeat\r\n"); /*text.....*/
 					                break;
 				}	
 			}	

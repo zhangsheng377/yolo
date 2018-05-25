@@ -241,8 +241,9 @@ uint8 LD_AsrRun()
 		return 0;
 	}
 //	LD_WriteReg(0xB6, 0xa); //识别时间	 1S
-	LD_WriteReg(0xB6, 0xa); //识别时间	 1S
+	//LD_WriteReg(0xB6, 0x0);
 //	LD_WriteReg(0xB5, 0x1E); //背景音段时间 300ms
+	//LD_WriteReg(0xB5, 0x0);
 //	LD_WriteReg(0xB8, 10); //结束时间
 
 //	LD_WriteReg(0x1C, 0x07); //配置双通道音频信号做为输入信号
@@ -276,30 +277,16 @@ uint8 LD_AsrAddFixed()
 {
 	uint8 k, flag;
 	uint8 nAsrAddLength;
-	#define DATE_A 11   /*数组二维数值*/
+	#define DATE_A 4   /*数组二维数值*/
 	#define DATE_B 20		/*数组一维数值*/
 	uint8 code sRecog[DATE_A][DATE_B] = {
 																				 "xiao zhang",\		
-																				 "kai fa ban yan zheng",\
-																				 "dai ma ce shi",\
-																				 "kai deng",\
-																				 "guan deng",\
-																				 "bei jing",\
-																				 "shang hai",\
-																				 "guang zhou",\
-		                                     "shao mi ao",\
+		                                     "sao miao",\
 		                                     "shi bie",\
 		                                     "pai zhao"
 																			};	/*添加关键词，用户修改*/
 	uint8 code pCode[DATE_A] = {
 															CODE_CMD,\
-															CODE_KFBYZ,\
-															CODE_DMCS,\
-															CODE_KD,\
-															CODE_GD,\
-															CODE_BJ,\
-															CODE_SH,\
-															CODE_GZ,\
 		                          CODE_SM,\
 		                          CODE_SB,
 		                          CODE_PZ
